@@ -10,13 +10,19 @@ class Counter extends Component {
     return (
       <div>
         <ul>
-          {this.state.tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
+            {this.state.tags.length === 0 && "Please create a new tag..."}
+            {this.renderTags()}
         </ul>
       </div>
     );
   }
+
+  renderTags() {
+    if(this.state.tags.length === 0) 
+        return <p>There are no tags</p>
+    return <ul> {this.state.tags.map( tag => <li key={tag}>{tag}</li> )} </ul>
+  }
+
 }
 
 export default Counter;
